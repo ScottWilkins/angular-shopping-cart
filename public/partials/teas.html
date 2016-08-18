@@ -31,21 +31,24 @@
     <tr ng-repeat="tea in view.teas | orderBy: view.price == 'lowest'? 'price' : '-price' | filter:view.search | filter:view.choice ">
       <td><img ng-src={{tea.imageUrl}} alt="awesome tea" /></td>
       <td>
-        <h2>{{tea.name}}</h2>
-        <h2 class="float-right">Quantity</h2>
-        <select class="float-right"ng-model="view.quantity">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select>
-        <button type="button" class="float-right btn btn-warning" name="Add To Bag"></button>
+        <h2 class="float-left">{{tea.name}}</h2>
+        <div class="float-right">
+          <h2 class="float-left">Quantity</h2>
+          <select class="down float-left"ng-model="view.quantity">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <button type="button" ng-click="view.add(view.quantity,tea)"class="float-left btn btn-warning" name="">Add To Bag</button>
+        </div>
+
         <p>Price: {{tea.price | decimal | currency}}</p>
         <p>Caffeine Scale: {{tea.caffeineScale}}</p>
         <p>Ingredients: {{tea.ingredients}}</p>

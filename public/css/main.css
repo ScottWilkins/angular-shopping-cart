@@ -54,9 +54,27 @@
   float:right;
 }
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid #c8c7cc;
     border-collapse: collapse;
+    padding-left: 10px;
+    padding-right: 10px;
 }
-td {
-  padding: 10px;
+
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}
+p{
+clear:both
+}
+ .down, .btn-warning {
+  margin-top: 30px;
+  margin-left: 5px;
+}
+.btn-warning {
+  background-color: #ffbb00;
+  height: 20px;
+  padding:0;
 }
