@@ -1,0 +1,28 @@
+<header class="search-sort">
+<h1>My Shopping Cart</h1>
+<h1 class="float-right">Order Total: $45.45</h1>
+</header>
+<section class="main-table">
+  <table class="tea-table">
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Sub-total</th>
+    <th></th>
+    <tr ng-repeat="tea in view.cart">
+      <td>
+        <h2>{{tea.name}}</h2>
+        <img ng-src={{tea.imageUrl}} alt="awesome tea" />
+        <p>Caffeine Scale: {{tea.caffeineScale}}</p>
+        <p>Ingredients: {{tea.ingredients}}</p>
+        <p>Rating: {{tea.rating}}</p>
+      </td>
+      <td>{{tea.quantity}}</td>
+      <td>$43.33</td>
+      <td>
+        <button class="btn btn-warning" type="button" name="button">Edit</button>
+        <button class="btn btn-danger" type="button" name="button">Remove</button>
+      </td>
+    </tr>
+  </table>
+
+</section>

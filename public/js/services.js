@@ -123,7 +123,25 @@ app.factory('TeaService', function () {
             "categories": ["spring", "warm","winter"]
         }
     ],
-    // add: function (message) {
+    shoppingCart: [
+      {
+          "_id": "55c8ee82152165d244b98309",
+          "name": "Angular mix",
+          "ingredients": "hot sauce, lawn clippings, fennel, parsley, quinine",
+          "caffeineScale": 196,
+          "price": 4158,
+          "inStock": true,
+          "rating": 2,
+          "imageUrl": "http://s7d5.scene7.com/is/image/Teavana/32621_d?$cimg$",
+          "__v": 0,
+          "categories": ["spring", "warm","winter"],
+          "quantity": 3
+      }
+    ],
+    getOne: function(id){
+      return this.all.filter(tea=>tea._id == id)
+    }
+    // add: function (quantity) {
     //   message.id = this.all.length+1
     //   this.all.push(message);
     // }
