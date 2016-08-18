@@ -1,6 +1,6 @@
 <header class="search-sort">
 <h1>My Shopping Cart</h1>
-<h1 class="float-right">Order Total: $45.45</h1>
+<h1 class="total">Order Total: {{view.orderTotal | decimal | currency  }}</h1>
 </header>
 <section class="main-table">
   <table class="tea-table">
@@ -17,10 +17,10 @@
         <p>Rating: {{tea.rating}}</p>
       </td>
       <td>{{tea.quantity}}</td>
-      <td>$43.33</td>
+      <td>{{tea.quantity * tea.price | decimal | currency}}</td>
       <td>
-        <button class="btn btn-warning" type="button" name="button">Edit</button>
-        <button class="btn btn-danger" type="button" name="button">Remove</button>
+        <button class="btn btn-warning edit" type="button" name="button" ng-click="view.logs()">Edit</button>
+        <button class="btn btn-danger edit" type="button" name="button" ng-click="view.remove(tea._id)">Remove</button>
       </td>
     </tr>
   </table>

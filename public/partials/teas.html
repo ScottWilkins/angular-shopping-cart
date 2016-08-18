@@ -13,7 +13,7 @@
   <p class="search-items">search by name:</p>
   <input class="search-items" type="text" ng-model="view.search">
   <div class="btn-div">
-    <button type="button" class="btn" ng-click="view.checkout()">checkout | bag empty!</button>
+    <button type="button" class="btn btn-danger" ng-click="view.checkout()">checkout | bag empty!</button>
   </div>
 
 </header>
@@ -46,7 +46,7 @@
             <option value="9">9</option>
             <option value="10">10</option>
           </select>
-          <button type="button" ng-click="view.add(view.quantity,tea._id)"class="float-left btn btn-warning" name="">Add To Bag</button>
+          <button type="button" ng-click="view.add(view.quantity,tea._id)"class="float-left btn-warning add-to-bag" name="">Add To Bag</button>
         </div>
 
         <p>Price: {{tea.price | decimal | currency}}</p>

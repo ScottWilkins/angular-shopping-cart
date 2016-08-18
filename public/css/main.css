@@ -23,6 +23,7 @@
 }
 .search-sort {
   display: flex;
+  justify-content:space-between;
   align-items: baseline
 }
 .search-items {
@@ -34,11 +35,7 @@
   width: 10%;
   height: 30px;
 }
-.btn {
-  background-color: #ff5c00;
-  align-self: flex-start;
-  color: #fff
-}
+
 .btn-div {
   width: 50%;
   display:flex;
@@ -56,8 +53,8 @@
 table, th, td {
     border: 1px solid #c8c7cc;
     border-collapse: collapse;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
+    vertical-align:top;
 }
 
 .float-right {
@@ -73,8 +70,17 @@ clear:both
   margin-top: 30px;
   margin-left: 5px;
 }
-.btn-warning {
+.add-to-bag {
   background-color: #ffbb00;
-  height: 20px;
+  height: 25px;
   padding:0;
+  background-color: #ff5c00;
+  align-self: flex-start;
+  color: #fff
+}
+.edit {
+  margin:1px;
+}
+.total {
+  margin-right: 3%;
 }

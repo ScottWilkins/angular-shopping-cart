@@ -140,10 +140,21 @@ app.factory('TeaService', function () {
     ],
     getOne: function(id){
       return this.all.filter(tea=>tea._id == id)
+    },
+    add: function (quantity, id) {
+      quantity = +quantity
+      var item = this.getOne(id)[0];
+      if(!item.quantity) item.quantity = quantity;
+      this.shoppingCart.indexOf(item) == -1 ? this.shoppingCart.push(item) : this.shoppingCart[this.shoppingCart.indexOf(item)].quantity += quantity;
+    },
+    orderTotal: function(){
+      var total = 0
+      this.shoppingCart.forEach(item=> total += item.price * item.quantity)
+      return total
+    },
+    remove: function(id){
+      this.shoppingCart = this.shoppingCart.filter(item=>item._id != id)
     }
-    // add: function (quantity) {
-    //   message.id = this.all.length+1
-    //   this.all.push(message);
-    // }
+
   }
 })
