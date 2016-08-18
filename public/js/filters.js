@@ -1,5 +1,5 @@
-app.filter('redact', function () {
-  return function (input, word) {
-    return input.replace(word, "REDACT");
+app.filter('decimal', function () {
+  return function (input) {
+    return input/100
   };
 });

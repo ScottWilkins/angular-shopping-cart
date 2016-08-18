@@ -1,3 +1,62 @@
-<p ng-repeat="tea in view.teas">
-  {{tea.name}}
-</p>
+<header class="search-sort">
+  <p class="search-items">search by category:</p>
+  <select class="search-items" ng-model="view.choice">
+    <option value="">--please select--</option>
+    <option value="hot">hot</option>
+    <option value="cold">cold</option>
+    <option value="awesome">awesome</option>
+    <option value="dark">dark</option>
+    <option value="dry">dry</option>
+    <option value="summer">summer</option>
+  </select>
+
+  <p class="search-items">search by name:</p>
+  <input class="search-items" type="text" ng-model="view.search">
+  <div class="btn-div">
+    <button type="button" class="btn ">checkout | bag empty!</button>
+  </div>
+
+</header>
+<section class="main-table">
+  <table class="tea-table">
+    <th>Tea</th>
+    <th>Information
+      <span class="table-sort">Sort by Price
+      <select ng-model="view.price">
+        <option value="lowest">lowest</option>
+        <option value="highest">highest</option>
+      </select>
+    </span>
+    </th>
+    <tr ng-repeat="tea in view.teas | orderBy: view.price == 'lowest'? 'price' : '-price' | filter:view.search | filter:view.choice ">
+      <td><img ng-src={{tea.imageUrl}} alt="awesome tea" /></td>
+      <td>
+        <h2>{{tea.name}}</h2>
+        <h2 class="float-right">Quantity</h2>
+        <select class="float-right"ng-model="view.quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <button type="button" class="float-right btn btn-warning" name="Add To Bag"></button>
+        <p>Price: {{tea.price | decimal | currency}}</p>
+        <p>Caffeine Scale: {{tea.caffeineScale}}</p>
+        <p>Ingredients: {{tea.ingredients}}</p>
+        <p>Rating: {{tea.rating}}</p>
+        <p>In Stock? {{tea.inStock ? "yes" : "no"}}</p>
+        <p>Categories</p>
+        <ul>
+          <li ng-repeat="cat in tea.categories">{{cat}}</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+
+</section>
