@@ -37,7 +37,7 @@
       <td>{{tea.quantity * tea.price | decimal | currency}}</td>
       <td>
         <button ng-hide="view.showUpdate" class="btn btn-warning edit" type="button" name="button" ng-click="view.updateShow()">Edit</button>
-        <button ng-show="view.showUpdate" class="btn btn-warning edit" type="button" name="button" ng-click="view.update()">Update</button>
+        <button ng-show="view.showUpdate" class="btn btn-warning edit" type="button" name="button" ng-click="view.update(tea)">Update</button>
         <button class="btn btn-danger edit" type="button" name="button" ng-click="view.remove(tea)">Remove</button>
       </td>
     </tr>

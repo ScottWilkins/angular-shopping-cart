@@ -1,5 +1,6 @@
 app.factory('TeaService', function () {
   return {
+
     all: [
         {
             "_id": "55c8ee82152165d244b98300",
@@ -123,20 +124,27 @@ app.factory('TeaService', function () {
             "categories": ["spring", "warm","winter"]
         }
     ],
+
     shoppingCart: [],
     orderTotal:  0,
     add: function (tea) {
-      if(!tea.quantity) tea.quantity = 1;
-      this.shoppingCart.indexOf(tea) == -1 ? this.shoppingCart.push(tea) : this.shoppingCart[this.shoppingCart.indexOf(tea)].quantity += tea.quantity;
+      if(!tea.addQuantity) tea.addQuantity = 1;
+      if(!tea.quantity) tea.quantity = 0;
+      if(this.shoppingCart.indexOf(tea) == -1) this.shoppingCart.push(tea);
+      tea.quantity += +tea.addQuantity;
+      tea.addQuantity = 1;
       this.subTotal = tea.quantity * tea.price;
       this.orderTotal += this.subTotal;
+
     },
-    update: function(){
+    update: function(tea){
+      tea.quantity = Number(tea.quantity)
       this.orderTotal = this.shoppingCart.reduce(function(start,b){return start +(b.quantity * b.price)},0)
     },
     remove: function(tea){
       this.shoppingCart = this.shoppingCart.filter(item=>item._id != tea._id)
       this.orderTotal -= (tea.quantity * tea.price);
+      tea.quantity = 0;
     },
   }
 })

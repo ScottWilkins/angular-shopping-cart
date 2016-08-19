@@ -1,5 +1,6 @@
 app.controller('TeasController', function ($scope, TeaService, $location) {
   $scope.view = {};
+  $scope.view.addQuantity = TeaService.addQuantity
   $scope.view.cart = TeaService.shoppingCart
   $scope.view.teas = TeaService.all;
   $scope.view.add = function(tea){
@@ -20,8 +21,8 @@ app.controller('CartController', function ($scope, TeaService) {
     this.showUpdate = !this.showUpdate
 };
 
-  $scope.view.update = function(){
-    TeaService.update()
+  $scope.view.update = function(tea){
+    TeaService.update(tea)
     $scope.view.orderTotal = TeaService.orderTotal
     this.showUpdate = !this.showUpdate
   }
