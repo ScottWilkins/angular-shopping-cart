@@ -124,28 +124,19 @@ app.factory('TeaService', function () {
         }
     ],
     shoppingCart: [],
-    getOne: function(id){
-      return this.all.filter(tea=>tea._id == id)
+    orderTotal:  0,
+    add: function (tea) {
+      if(!tea.quantity) tea.quantity = 1;
+      this.shoppingCart.indexOf(tea) == -1 ? this.shoppingCart.push(tea) : this.shoppingCart[this.shoppingCart.indexOf(tea)].quantity += tea.quantity;
+      this.subTotal = tea.quantity * tea.price;
+      this.orderTotal += this.subTotal;
     },
-    add: function (quantity, id) {
-      quantity = +quantity
-      var item = this.getOne(id)[0];
-      if(!item.quantity) item.quantity = quantity;
-      this.shoppingCart.indexOf(item) == -1 ? this.shoppingCart.push(item) : this.shoppingCart[this.shoppingCart.indexOf(item)].quantity += quantity;
+    update: function(){
+      this.orderTotal = this.shoppingCart.reduce(function(start,b){return start +(b.quantity * b.price)},0)
     },
-    orderTotal: function(){
-      var total = 0
-      this.shoppingCart.forEach(item=> total += item.price * item.quantity)
-      return total
+    remove: function(tea){
+      this.shoppingCart = this.shoppingCart.filter(item=>item._id != tea._id)
+      this.orderTotal -= (tea.quantity * tea.price);
     },
-    remove: function(id){
-      this.shoppingCart = this.shoppingCart.filter(item=>item._id != id)
-    },
-    update: function(id,quantity){
-      quantity = +quantity;
-      var item = this.getOne(id)[0];
-      console.log(item);
-      this.shoppingCart[this.shoppingCart.indexOf(item)].quantity = +quantity;
-    }
   }
 })

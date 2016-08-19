@@ -34,7 +34,7 @@
         <h2 class="float-left">{{tea.name}}</h2>
         <div class="float-right">
           <h2 class="float-left">Quantity</h2>
-          <select class="down float-left"ng-model="view.quantity">
+          <select class="down float-left"ng-model="tea.quantity">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -46,7 +46,7 @@
             <option value="9">9</option>
             <option value="10">10</option>
           </select>
-          <button type="button" ng-click="view.add(view.quantity || 1,tea._id)"class="float-left btn-warning add-to-bag" name="">Add To Bag</button>
+          <button type="button" ng-click="view.add(tea)"class="float-left btn-warning add-to-bag" name="">Add To Bag</button>
         </div>
 
         <p>Price: {{tea.price | decimal | currency}}</p>

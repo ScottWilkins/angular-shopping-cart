@@ -1,6 +1,7 @@
 <header class="search-sort">
 <h1>My Shopping Cart</h1>
 <h1 class="total">Order Total: {{view.orderTotal | decimal | currency  }}</h1>
+
 </header>
 <section class="main-table">
   <table class="tea-table">
@@ -17,11 +18,10 @@
         <p>Rating: {{tea.rating}}</p>
       </td>
 
-      <td  ng-hide="view.showUpdate"> {{tea.quantity}}
+      <td ng-hide="view.showUpdate"> {{tea.quantity}}
       </td>
-      <div ng-show="view.showUpdate" class="update-quantity">
-        <td ng-show="view.showUpdate"><span>Quantity: </span>
-          <select class="down float-left"ng-model="tea.quantity">
+        <td class="update" ng-show="view.showUpdate"><span class="left">Quantity: </span>
+          <select class="down" ng-model="tea.quantity">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -34,12 +34,11 @@
             <option value="10">10</option>
           </select>
         </td>
-      </div>
       <td>{{tea.quantity * tea.price | decimal | currency}}</td>
       <td>
         <button ng-hide="view.showUpdate" class="btn btn-warning edit" type="button" name="button" ng-click="view.updateShow()">Edit</button>
-        <button ng-show="view.showUpdate" class="btn btn-warning edit" type="button" name="button" ng-click="view.update(tea._id, tea.quantity)">Update</button>
-        <button class="btn btn-danger edit" type="button" name="button" ng-click="view.remove(tea._id)">Remove</button>
+        <button ng-show="view.showUpdate" class="btn btn-warning edit" type="button" name="button" ng-click="view.update()">Update</button>
+        <button class="btn btn-danger edit" type="button" name="button" ng-click="view.remove(tea)">Remove</button>
       </td>
     </tr>
   </table>

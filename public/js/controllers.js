@@ -2,8 +2,8 @@ app.controller('TeasController', function ($scope, TeaService, $location) {
   $scope.view = {};
   $scope.view.cart = TeaService.shoppingCart
   $scope.view.teas = TeaService.all;
-  $scope.view.add = function(quantity, id){
-    TeaService.add(quantity, id)
+  $scope.view.add = function(tea){
+    TeaService.add(tea)
   }
   $scope.view.checkout = function(){
     $location.path('/checkout')
@@ -13,20 +13,21 @@ app.controller('TeasController', function ($scope, TeaService, $location) {
 app.controller('CartController', function ($scope, TeaService) {
   $scope.view = {};
   $scope.view.showUpdate = false;
+  $scope.view.orderTotal = TeaService.orderTotal;
+  $scope.view.cart = TeaService.shoppingCart
+
   $scope.view.updateShow = function(){
     this.showUpdate = !this.showUpdate
 };
-  $scope.view.orderTotal = TeaService.orderTotal();
-  $scope.view.cart = TeaService.shoppingCart
-  $scope.view.logs = function(){
-    console.log($scope.view.orderTotal);
-  };
-  $scope.view.update = function(id,quantity){
-    TeaService.update(id, quantity)
-    $scope.view.showUpdate = false;
+
+  $scope.view.update = function(){
+    TeaService.update()
+    $scope.view.orderTotal = TeaService.orderTotal
+    this.showUpdate = !this.showUpdate
   }
-  $scope.view.remove = function(id){
-    TeaService.remove(id)
+  $scope.view.remove = function(tea){
+    TeaService.remove(tea)
     $scope.view.cart = TeaService.shoppingCart
+    $scope.view.orderTotal = TeaService.orderTotal
   };
 })
